@@ -22,7 +22,7 @@
 
 We present **GaussianDet3D**, the first method to apply 3D Gaussian Splatting from multi-view images to 3D object detection in autonomous driving. Gaussian primitives are treated as a pseudo-LiDAR point cloud fed directly into a sparse LiDAR detector, encoding geometry, orientation, opacity, and per-class semantics. Temporal aggregation across frames enables precise velocity estimation without explicit tracking. On the **nuScenes benchmark**, GaussianDet3D achieves **state-of-the-art translation error and velocity error** among all camera-based methods, outperforming BEVFormer by **8.1%** and **13.1%** respectively.
 
-![GaussianDet3D Pipeline](src/method.png)
+![GaussianDet3D Pipeline](fig/method.png)
 
 Multi-view images are encoded (ResNet-101-DCN + FPN), lifted into 3D Gaussian primitives via depth estimation, refined by the Gaussian Encoder (sparse 3D conv + deformable cross-attention), and passed as a pseudo-LiDAR point cloud to FSD V2 for 3D bounding box prediction.
 
