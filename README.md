@@ -6,7 +6,7 @@
 
 
 
-**DriveX Workshop @ CVPR 2026**
+**DriveX Workshop @ CVPR 2026 — Oral Presentation**
 
 [![Paper](https://img.shields.io/badge/Paper-PDF-red)](https://drivex-workshop.github.io/cvpr2026/static/pdf/30_GaussianDet3D_Bridging_Gaus.pdf)
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://malaztamim.com/GaussianDet3D/)
