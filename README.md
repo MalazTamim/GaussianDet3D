@@ -4,7 +4,7 @@
 
 <sup>1</sup>Technical University of Munich &nbsp; <sup>2</sup>UC Berkeley &nbsp; <sup>3</sup>Munich Center for Machine Learning &nbsp; <sup>4</sup>DeepScenario
 
-\* Corresponding author: malaz.tamim@tum.de
+
 
 **DriveX Workshop @ CVPR 2026**
 
