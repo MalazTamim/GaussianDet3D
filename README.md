@@ -14,10 +14,6 @@
 
 ---
 
-> 🚧 **Code coming soon!** We are preparing the codebase for release. Stay tuned by watching/starring this repo.
-
----
-
 ## Overview
 
 We present **GaussianDet3D**, the first method to apply 3D Gaussian Splatting from multi-view images to 3D object detection in autonomous driving. Gaussian primitives are treated as a pseudo-LiDAR point cloud fed directly into a sparse LiDAR detector, encoding geometry, orientation, opacity, and per-class semantics. Temporal aggregation across frames enables precise velocity estimation without explicit tracking. On the **nuScenes benchmark**, GaussianDet3D achieves **state-of-the-art translation error and velocity error** among all camera-based methods, outperforming BEVFormer by **8.1%** and **13.1%** respectively.
@@ -26,10 +22,51 @@ We present **GaussianDet3D**, the first method to apply 3D Gaussian Splatting fr
 
 Multi-view images are encoded (ResNet-101-DCN + FPN), lifted into 3D Gaussian primitives via depth estimation, refined by the Gaussian Encoder (sparse 3D conv + deformable cross-attention), and passed as a pseudo-LiDAR point cloud to FSD V2 for 3D bounding box prediction.
 
+## Installation & Data Preparation
+
+GaussianDet3D is built on top of [FSD v2](https://github.com/tusen-ai/SST). Please follow the [FSD v2 installation and data preparation instructions](https://github.com/tusen-ai/SST/blob/main/docs/fsdv2_instructions.md) to set up the environment, compile the custom ops, and prepare the nuScenes dataset.
+
+## Training
+
+```bash
+# 25600 Gaussians
+python tools/train.py configs/gaussiandet3d/gaussiandet3d_25600.py --work-dir work_dirs/gaussiandet3d_25600
+
+# 6400 Gaussians
+python tools/train.py configs/gaussiandet3d/gaussiandet3d_6400.py --work-dir work_dirs/gaussiandet3d_6400
+
+# 25600 Gaussians, multi-frame
+python tools/train.py configs/gaussiandet3d/gaussiandet3d_25600_multiframe.py --work-dir work_dirs/gaussiandet3d_25600_multiframe
+
+# 6400 Gaussians, multi-frame
+python tools/train.py configs/gaussiandet3d/gaussiandet3d_6400_multiframe.py --work-dir work_dirs/gaussiandet3d_6400_multiframe
+```
+
+## Evaluation
+
+```bash
+# 25600 Gaussians
+python tools/test.py configs/gaussiandet3d/gaussiandet3d_25600.py ckpts/gaussiandet3d_25600.pth --eval bbox
+
+# 6400 Gaussians
+python tools/test.py configs/gaussiandet3d/gaussiandet3d_6400.py ckpts/gaussiandet3d_6400.pth --eval bbox
+
+# 25600 Gaussians, multi-frame
+python tools/test.py configs/gaussiandet3d/gaussiandet3d_25600_multiframe.py ckpts/gaussiandet3d_25600_multiframe.pth --eval bbox
+
+# 6400 Gaussians, multi-frame
+python tools/test.py configs/gaussiandet3d/gaussiandet3d_6400_multiframe.py ckpts/gaussiandet3d_6400_multiframe.pth --eval bbox
+```
+
 ## Citation
 
-Citation information will be available upon arXiv publication.
-
-## Acknowledgements
-
-The project page template is borrowed from [Nerfies](https://github.com/nerfies/nerfies.github.io).
+```bibtex
+@InProceedings{Tamim_2026_CVPR,
+    author    = {Tamim, Malaz and Zheng, Wenzhao and Meier, Johannes Michael and Cremers, Daniel and Keutzer, Kurt},
+    title     = {GaussianDet3D: Bridging Gaussian Splatting and Sparse LiDAR Detection for Multi-View 3D Object Detection},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2026},
+    pages     = {766-774}
+}
+```

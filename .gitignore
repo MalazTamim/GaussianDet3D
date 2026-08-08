@@ -1,0 +1,20 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Build artifacts / compiled extensions
+build/
+*.so
+*.o
+
+# Checkpoints / weights
+*.pth
+*.ckpt
+
+# Logs / experiment outputs
+work_dirs/
+*.log
